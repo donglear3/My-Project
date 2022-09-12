@@ -1,0 +1,50 @@
+<?php include("connection.php"); ?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+</head>
+
+<body>
+  <form action="#" method="POST">
+  <label>Name</label><br>
+  <input type="text" name="name"><br>
+  
+  <label>Email</label><br>
+  <input type="text" name="email"><br>
+  
+  <label for="">Password</label><br>
+  <input type="text" name="password">
+  
+  <input type="submit" name="submit">
+  </form>
+</body>
+
+</html>
+
+<?php
+  if($_POST['submit'])
+  {
+    $username = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    $query = "INSERT INTO form (name, email, password) values('$username','$email','$password')";
+    
+    $data = mysqli_query($conn,$query);
+    
+    if($data)
+    {
+      echo "Data Inserted";
+    }
+    else
+    {
+      echo "Faild Data Can not be Insert";
+    }
+    
+  }
+?>
