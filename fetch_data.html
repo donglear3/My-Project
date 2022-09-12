@@ -1,0 +1,41 @@
+  <?php
+  $query = "SELECT * FROM form";
+  $data = mysqli_query($conn, $query);
+  
+  $total = mysqli_num_rows($data);
+
+  
+  if($total != 0)
+  {
+    ?>
+    <h2 align="center"><mark>Management Page</mark></h2>
+    <center>
+    <table border="6px" cellspacing="7px" width="93%">
+      <tr>
+        <th width="8%">ID</th>
+        <th width="22%">Name</th>
+        <th width="26%">Email</th>
+        <th width="20%">Password</th>
+        <th width="18%">Manage</th>
+      </tr>
+
+    
+    <?php
+    while($result = mysqli_fetch_assoc($data))
+    {
+      echo "<tr>
+                <td>".$result[id]."</td>
+                <td>".$result[name]."</td>
+                <td>".$result[email]."</td>
+                <td>".$result[password]."</td>
+          </tr>";
+    }
+      //echo "Table has data";
+  }
+  else
+  {
+      echo "Table Has No Data";
+  }
+?>
+    </table>
+    </html>
